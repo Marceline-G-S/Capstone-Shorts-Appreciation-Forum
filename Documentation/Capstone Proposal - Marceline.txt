@@ -1,0 +1,51 @@
+PROBLEM SOLVED
+Describe the problem you have identified and want to solve with your project. Also provide a brief overview of your project and how it will solve the problem.
+	“I think shorts are great! They're comfortable and easy to wear!” This project is a short homage to Youngster Joey, a bit of a cult favorite in Pokemon. I thought to myself, “I wonder what type of content someone who thinks like that would engage with?” And clearly the answer was that Youngster Joey would love a forum dedicated to appreciating shorts. 
+WIREFRAMES
+Wireframes must include each view you intend to have. Each view must include a layout to show where content will be displayed.
+
+{insert link to your wireframes that are publicly accessible to your coach}
+
+ERD
+User-related data. At least one many-to-many relationship if you are building your final capstone.. 
+{insert link to ERD that is publicly accessible to your coach}
+
+PROJECT MVP: STORIES & CRITERIA
+As a User, I should be able to make a post 
+Given the user wants to create a post
+When the user clicks create post
+Then they should be then taken to the create post page to fill out its topic and body, and after clicking the post button should be taken to the post's new page
+As a User, I should be able to delete a post 
+Given the user wants to delete a post
+When the user clicks the delete post button
+Then they should be offered and “Are you sure?” Prompt, which should then permanently delete the post. Going to its link directly should then show “This post has been deleted”, but then still load comments from the post. 
+
+As a User, I should be able to edit a post 
+Given the user wants to edit a post
+When the user clicks clicks the edit button on the post's page
+Then that should open the edit post component, prefilled with the post's current information. After making their changes, they should be able to click complete edit to update the post, showing the updated content on the page
+As a User, I should be able to edit my profile 
+Given the user edit their profile
+When the user My Profile from the navbar, then clicks the edit profile button (which will only load for the signed in account)
+Then they should open drop downs and fields for their account information.
+
+As a User, I should be able to view and filter posts  
+Given the user wants to find and view specific types of posts
+When the user is on the home page or clicks it from the navbar
+Then they should be able to see the list of posts, filtered by date. The user should then be able to filter the results of the list by different settings to narrow down the search results
+
+
+
+
+
+
+
+STRETCH GOALS: STORIES & CRITERIA
+As a user, I should be able to load and play their NPC trainer simulator
+Given the user wants to experience life from the perspective of the NPCs
+When the user selects “Pokemon NPC simulator”
+Then  the site should load  a tiny pokemon simulator. This simulator should allow the user to setup and edit their trainer profile, provide an infinite loop of “normal” battles, and then a final battle with the main character of the game instantly defeats the player. Extra extra stretch goals : Character customization. Sprites/“animating” static images. Audio. Adding the possibility of “Winning” against the main character and having the main character “avoid” the player. Other running wild ideas that will probably be too much work.
+
+
+
+
