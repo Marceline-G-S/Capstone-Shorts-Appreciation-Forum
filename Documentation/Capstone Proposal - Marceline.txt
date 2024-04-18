@@ -1,24 +1,22 @@
 PROBLEM SOLVED
 Describe the problem you have identified and want to solve with your project. Also provide a brief overview of your project and how it will solve the problem.
-	“I think shorts are great! They're comfortable and easy to wear!” This project is a short homage to Youngster Joey, a bit of a cult favorite in Pokemon. I thought to myself, “I wonder what type of content someone who thinks like that would engage with?” And clearly the answer was that Youngster Joey would love a forum dedicated to appreciating shorts. 
+	ï¿½I think shorts are great! They're comfortable and easy to wear!ï¿½ This project is a short homage to Youngster Joey, a bit of a cult favorite in Pokemon. I thought to myself, ï¿½I wonder what type of content someone who thinks like that would engage with?ï¿½ And clearly the answer was that Youngster Joey would love a forum dedicated to appreciating shorts. 
 WIREFRAMES
 Wireframes must include each view you intend to have. Each view must include a layout to show where content will be displayed.
+https://github.com/Marceline-G-S/Capstone-Shorts-Appreciation-Forum/blob/main/Documentation/wireframe%20components%20focus.jpg
 
-{insert link to your wireframes that are publicly accessible to your coach}
-
+https://github.com/Marceline-G-S/Capstone-Shorts-Appreciation-Forum/blob/main/Documentation/wireframe%20view%20focus.jpg
 ERD
 User-related data. At least one many-to-many relationship if you are building your final capstone.. 
-{insert link to ERD that is publicly accessible to your coach}
-
+https://github.com/Marceline-G-S/Capstone-Shorts-Appreciation-Forum/blob/main/Documentation/Capstone%20proposal%20MVP%20ERD%20Marceline.png
 PROJECT MVP: STORIES & CRITERIA
 As a User, I should be able to make a post 
 Given the user wants to create a post
 When the user clicks create post
-Then they should be then taken to the create post page to fill out its topic and body, and after clicking the post button should be taken to the post's new page
-As a User, I should be able to delete a post 
+Then they should be then taken to the create post page to choose an existing topic in a dropdown and enter in the body, and after clicking the post button should be taken to the post's new page 
 Given the user wants to delete a post
 When the user clicks the delete post button
-Then they should be offered and “Are you sure?” Prompt, which should then permanently delete the post. Going to its link directly should then show “This post has been deleted”, but then still load comments from the post. 
+Then they should be offered and ï¿½Are you sure?ï¿½ Prompt, which should then permanently delete the post. Going to its link directly should then show ï¿½This post has been deletedï¿½, but then still load comments from the post. 
 
 As a User, I should be able to edit a post 
 Given the user wants to edit a post
@@ -43,8 +41,8 @@ Then they should be able to see the list of posts, filtered by date. The user sh
 STRETCH GOALS: STORIES & CRITERIA
 As a user, I should be able to load and play their NPC trainer simulator
 Given the user wants to experience life from the perspective of the NPCs
-When the user selects “Pokemon NPC simulator”
-Then  the site should load  a tiny pokemon simulator. This simulator should allow the user to setup and edit their trainer profile, provide an infinite loop of “normal” battles, and then a final battle with the main character of the game instantly defeats the player. Extra extra stretch goals : Character customization. Sprites/“animating” static images. Audio. Adding the possibility of “Winning” against the main character and having the main character “avoid” the player. Other running wild ideas that will probably be too much work.
+When the user selects ï¿½Pokemon NPC simulatorï¿½
+Then  the site should load  a tiny pokemon simulator. This simulator should allow the user to setup and edit their trainer profile, provide an infinite loop of ï¿½normalï¿½ battles, and then a final battle with the main character of the game instantly defeats the player. Extra extra stretch goals : Character customization. Sprites/ï¿½animatingï¿½ static images. Audio. Adding the possibility of ï¿½Winningï¿½ against the main character and having the main character ï¿½avoidï¿½ the player. Other running wild ideas that will probably be far too much work.
 
 
 
