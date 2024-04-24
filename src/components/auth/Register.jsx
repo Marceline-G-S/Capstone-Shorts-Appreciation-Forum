@@ -3,18 +3,44 @@ import { useNavigate } from "react-router-dom"
 import "./Login.css"
 import { createUser, getUserByUsername } from "../../services/userService"
 
+const formatCurrentTime = () => {
+  // Create a new Date object for the current date and time
+  var now = new Date();
+
+  // Extract the date and time components
+  var year = now.getFullYear()
+  var month = now.getMonth() + 1; // Months are 0-based, so we add 1
+  var day = now.getDate();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
+
+  // Pad single-digit months, days, hours, minutes, and seconds with a leading zero
+  if (month < 10) month = '0' + month;
+  if (day < 10) day = '0' + day;
+  if (hours < 10) hours = '0' + hours;
+  if (minutes < 10) minutes = '0' + minutes;
+  if (seconds < 10) seconds = '0' + seconds;
+
+  // Format the date and time as a string
+  var formattedDateTime = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+
+  return formattedDateTime;
+}
+
 export const Register = (props) => {
   const [user, setUser] = useState({
-    email: "",
-    fullName: "",
-    cohort: 0,
+    username: "",
+    type: 0,
   })
   let navigate = useNavigate()
 
   const registerNewUser = () => {
     const newUser = {
       ...user,
-      cohort: parseInt(user.cohort),
+      type: parseInt(user.type),
+      role: "user",
+      created_at: formatCurrentTime()
     }
 
     createUser(newUser).then((createdUser) => {
@@ -23,7 +49,7 @@ export const Register = (props) => {
           "shorts_user",
           JSON.stringify({
             id: createdUser.id,
-            staff: createdUser.isStaff,
+            role: createdUser.role,
           })
         )
 
@@ -34,12 +60,15 @@ export const Register = (props) => {
 
   const handleRegister = (e) => {
     e.preventDefault()
-    getUserByUsername(user.email).then((response) => {
+    getUserByUsername(user.username).then((response) => {
       if (response.length > 0) {
-        // Duplicate email. No good.
-        window.alert("Account with that email address already exists")
+        // Duplicate username. No good.
+        window.alert("Account with that username address already exists")
+      } else if (user.type > 15 || user.type < 0) {
+        //Stopgap measure to prevent accidentally entering a non-type number.
+        window.alert("Hey, now! That's not a typing.")
       } else {
-        // Good email, create user.
+        // Good username, create user.
         registerNewUser()
       }
     })
@@ -54,29 +83,16 @@ export const Register = (props) => {
   return (
     <main className="auth-container">
       <form className="auth-form" onSubmit={handleRegister}>
-        <h1 className="header">Learning Moments</h1>
+        <h1 className="header">Shorts Appreciation</h1>
         <h2>Please Register</h2>
         <fieldset className="auth-fieldset">
           <div>
             <input
               onChange={updateUser}
               type="text"
-              id="fullName"
+              id="username"
               className="auth-form-input"
-              placeholder="Enter your name"
-              required
-              autoFocus
-            />
-          </div>
-        </fieldset>
-        <fieldset className="auth-fieldset">
-          <div>
-            <input
-              onChange={updateUser}
-              type="email"
-              id="email"
-              className="auth-form-input"
-              placeholder="Email address"
+              placeholder="username here"
               required
             />
           </div>
@@ -86,9 +102,9 @@ export const Register = (props) => {
             <input
               onChange={updateUser}
               type="number"
-              id="cohort"
+              id="type"
               className="auth-form-input"
-              placeholder="Cohort #"
+              placeholder="Type # (enter a number 1-15)"
               required
             />
           </div>

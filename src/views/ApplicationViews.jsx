@@ -2,6 +2,9 @@ import { Routes, Route, Outlet } from "react-router-dom"
 import { NavBar } from "../components/navbar/navbar.jsx" 
 import { Welcome } from "../components/welcome/welcome.jsx"
 import { useEffect, useState } from "react"
+import { PostList } from "../components/posts/PostList.jsx"
+import { ProfileView } from "../components/profile/ProfileView.jsx"
+import { OtherProfileRender } from "../components/profile/OtherProfileRender.jsx"
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({})
@@ -20,18 +23,23 @@ export const ApplicationViews = () => {
     <Routes>
       <Route path="/" element={<> <NavBar/> <Outlet/> </>} >
         <Route index element={<Welcome/>} />
-        <Route path="tickets" element={"tickets"} />
-        
+        <Route path="posts" element={PostList} />
+
         <Route path="employees">  
-          <Route index element={"EmployeesList"} />
-          <Route path=":employeeId" element={"EmployeeDetails"}/>
+          <Route index element={<Welcome/>} />
+          <Route path=":employeeId" element={<Welcome/>}/>
+        </Route>
+        
+        <Route path="profile">  
+          <Route index element={<ProfileView getAndSetUser={getAndSetUser} currentUser={currentUser}/>} />
+          <Route path=":profileId" element={<OtherProfileRender/>}/>
         </Route>
 
         <Route path="customers">
-          <Route index element={"CustomerList"} />
-          <Route path=":customerId" element={"CustomerDetails"}/>
+          <Route index element={<Welcome/>} />
+          <Route path=":customerId" element={<Welcome/>}/>
         </Route>
-        <Route path="profile" element= {"EmployeeForm" /*getAndSetUser={getAndSetUser} currentUser={currentUser}*/}/>
+        
       </Route>
     </Routes>
   </>

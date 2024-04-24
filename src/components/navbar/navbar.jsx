@@ -6,7 +6,7 @@ export const NavBar = () => {
 
     return <ul className="navbar">
         <li className="navbar-item"><Link to=''>Welcome</Link></li>
-        <li className="navbar-item"><Link to='tickets'>Tickets</Link></li>
+        <li className="navbar-item"><Link to='posts'>All Posts</Link></li>
         <li className="navbar-item"><Link to='employees'>Employees</Link></li>
         <li className="navbar-item"><Link to='customers'>Customers</Link></li>
         {/**This section below loads log out option of navbar if logged in. */}
