@@ -7,10 +7,11 @@ export const NavBar = () => {
     return <ul className="navbar">
         <li className="navbar-item"><Link to=''>Welcome</Link></li>
         <li className="navbar-item"><Link to='posts'>All Posts</Link></li>
-        <li className="navbar-item"><Link to='employees'>Employees</Link></li>
-        <li className="navbar-item"><Link to='customers'>Customers</Link></li>
+        <li className="navbar-item"><Link to='myposts'>My Posts</Link></li>
+        <li className="navbar-item"><Link to='favorites'>Favorites</Link></li>
+        <li className="navbar-item"><Link to='newpost'>New Post</Link></li>
         {/**This section below loads log out option of navbar if logged in. */}
-        <li className="navbar-item"><Link to="/profile">Profiles</Link></li>
+        <li className="navbar-item"><Link to="/profile">Profile</Link></li>
         {localStorage.getItem("shorts_user") ? (<li className="navbar-item navbar-logout">
         <Link className="navbar-link" to=""
         onClick={() => {
