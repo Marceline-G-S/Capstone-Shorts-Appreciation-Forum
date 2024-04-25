@@ -14,7 +14,7 @@ export const ProfileView = ({currentUser}) => {
         }
     }, [currentUser])
 
-    return <div className="customers">
+    return <div className="profiles">
         <Link to={`/profiles/${currentUser.id}`}>
             <ProfileRender key={currentUser.id} user={profile} />
         </Link>

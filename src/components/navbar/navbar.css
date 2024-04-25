@@ -8,6 +8,9 @@
   }
 
   .navbar-item {
+    flex-grow: 1; /* Allows items to grow if needed */
+    flex-shrink: 1; /* Allows items to shrink if needed */
+    flex-basis: auto; /* Adjusts the initial size based on content */
     flex-basis: 20%;
     list-style-type: none;
     text-align: center;
