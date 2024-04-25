@@ -23,7 +23,7 @@ export const ApplicationViews = () => {
     <Routes>
       <Route path="/" element={<> <NavBar/> <Outlet/> </>} >
         <Route index element={<Welcome/>} />
-        <Route path="posts" element={PostList} />
+        <Route path="posts" element={<PostList/>} />
 
         <Route path="myposts">  
           <Route index element={<Welcome/>} />
