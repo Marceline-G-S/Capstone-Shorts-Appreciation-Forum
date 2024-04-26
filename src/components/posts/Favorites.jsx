@@ -1,19 +1,22 @@
-import { getAllPosts } from "../../services/postService.js";
+import { getLikedPostsByUserId } from "../../services/postService.js";
 import { useEffect, useState } from "react"
 import { FilterBar } from "./FilterBar.jsx";
 import { Post } from "./Post.jsx";
 import "./post.css"
 import { Link } from "react-router-dom";
 
-export const PostList = () => {
+export const MyPosts = ({ currentUser }) => {
     const [displayedPosts, setdisplayedPosts] = useState([]);
     const [allPosts, setAllPosts] = useState([]);
     const [searchBar, setSearchBar] = useState("")
 
     useEffect(() => {
-        getAllPosts().then(postsArr => {setAllPosts(postsArr)
-        setdisplayedPosts(postsArr)})
-    }, [])
+        if (!!currentUser.id){
+            getLikedPostsByUserId(currentUser.id).then(postsArr => {setAllPosts(postsArr);
+            setdisplayedPosts(postsArr)})
+        }
+    }, [currentUser])
+
     
     useEffect(() => {
         setdisplayedPosts(allPosts.filter((post) => post.title.toLowerCase().includes(searchBar.toLocaleLowerCase()) ))
@@ -25,8 +28,8 @@ export const PostList = () => {
             <FilterBar setSearchBar={setSearchBar}/>
             <article className="posts">
                 {displayedPosts.map((postObject) => {
-                return <Link key={postObject.id} to={`/posts/${postObject.id}`}>
-                        <Post post={postObject} key={postObject.id}/>
+                return <Link key={postObject.posts.id} to={`/posts/${postObject.posts.id}`}>
+                        <Post post={postObject.posts} key={postObject.posts.id}/>
                     </Link>
                 })}
             </article>
