@@ -5,9 +5,11 @@ import { useEffect, useState } from "react"
 import { PostList } from "../components/posts/PostList.jsx"
 import { ProfileView } from "../components/profile/ProfileView.jsx"
 import { OtherProfileRender } from "../components/profile/OtherProfileRender.jsx"
+import { PostDetails } from "../components/posts/PostDetails.jsx"
+import { MyPosts } from "../components/posts/MyPosts.jsx"
 
 export const ApplicationViews = () => {
-  const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState({id:0})
 
   useEffect(()=>{
     setCurrentUser(getAndSetUser())
@@ -23,11 +25,14 @@ export const ApplicationViews = () => {
     <Routes>
       <Route path="/" element={<> <NavBar/> <Outlet/> </>} >
         <Route index element={<Welcome/>} />
-        <Route path="posts" element={PostList} />
+        <Route path="posts">
+          <Route index element={<PostList/>}/>
+          <Route path=":postId" element={<PostDetails getAndSetUser={getAndSetUser} currentUser={currentUser}/>}/>
+        </Route>
 
         <Route path="myposts">  
-          <Route index element={<Welcome/>} />
-          <Route path=":postId" element={<Welcome/>}/>
+          <Route index element={<MyPosts getAndSetUser={getAndSetUser} currentUser={currentUser}/>} />
+          <Route path=":postId" element={<PostDetails />}/>
         </Route>
 
         <Route path="favorites" element={<Welcome/>}></Route>
