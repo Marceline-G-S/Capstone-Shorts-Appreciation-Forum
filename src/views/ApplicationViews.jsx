@@ -7,6 +7,7 @@ import { ProfileView } from "../components/profile/ProfileView.jsx"
 import { OtherProfileRender } from "../components/profile/OtherProfileRender.jsx"
 import { PostDetails } from "../components/posts/PostDetails.jsx"
 import { MyPosts } from "../components/posts/MyPosts.jsx"
+import { MyLikedPosts } from "../components/posts/Favorites.jsx"
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({id:0})
@@ -35,7 +36,7 @@ export const ApplicationViews = () => {
           <Route path=":postId" element={<PostDetails />}/>
         </Route>
 
-        <Route path="favorites" element={<Welcome/>}></Route>
+        <Route path="favorites" element={<MyLikedPosts currentUser={currentUser}/>}></Route>
 
         <Route path="newpost" element={<Welcome/>}></Route>
         
