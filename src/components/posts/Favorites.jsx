@@ -13,30 +13,19 @@ export const MyLikedPosts = ({ currentUser }) => {
     const [searchBar, setSearchBar] = useState("")
     const [likedArr, setLikedArr] = useState([])
 
-    /*//Checks to ensure currentUser is set correctly.
     useEffect(() => {
-        if (currentUser?.id){
-            getLikedPostsByUserId(currentUser.id).then(postsArr => {setAllLikedPosts(postsArr);
-            setdisplayedPosts(postsArr)})
-        }
-    }, [currentUser])
-
-    //Gets all posts for the user
-    useEffect(() => {
-        getLikedPostsByUserId(currentUser?.id).then(postsArr => {setAllLikedPosts(postsArr)})
-    }, [currentUser])
-    
-    //Sets the posts
-    useEffect(() => {
-        setdisplayedPosts(allLikedPosts.filter((post) => post.title.toLowerCase().includes(searchBar.toLocaleLowerCase()) ))
-    }, [searchBar, allLikedPosts])*/
+        getAllPosts().then(posts => {
+            setAllLikedPosts(posts);
+            return getLikedPostsByUserId(currentUser.id);
+        }).then(likedPosts => {
+            setLikedArr(likedPosts);
+        });
+    }, [currentUser]);
 
     useEffect(() => {
-        getAllPosts().then(setAllLikedPosts)
-        getLikedPostsByUserId(currentUser.id).then(setLikedArr)
-        setAllLikedPosts(allLikedPosts.filter(post => likedArr.some(like => like.postsId === post.id)))
-        setdisplayedPosts(allLikedPosts)
-    }, [])
+            const filteredPosts = allLikedPosts.filter(post => likedArr.some(like => like.postsId === post.id));
+            setdisplayedPosts(filteredPosts);
+    }, [likedArr]);
     
     useEffect(() => {
         setdisplayedPosts(allLikedPosts.filter((post) => post.title.toLowerCase().includes(searchBar.toLocaleLowerCase()) ))
@@ -56,3 +45,43 @@ export const MyLikedPosts = ({ currentUser }) => {
         </div>
     </>
 }
+
+
+
+
+
+    /*//Checks to ensure currentUser is set correctly.
+    useEffect(() => {
+        if (currentUser?.id){
+            getLikedPostsByUserId(currentUser.id).then(postsArr => {setAllLikedPosts(postsArr);
+            setdisplayedPosts(postsArr)})
+        }
+    }, [currentUser])
+
+    //Gets all posts for the user
+    useEffect(() => {
+        getLikedPostsByUserId(currentUser?.id).then(postsArr => {setAllLikedPosts(postsArr)})
+    }, [currentUser])
+    
+    //Sets the posts
+    useEffect(() => {
+        setdisplayedPosts(allLikedPosts.filter((post) => post.title.toLowerCase().includes(searchBar.toLocaleLowerCase()) ))
+    }, [searchBar, allLikedPosts])*/
+
+    /*useEffect(() => {
+        getAllPosts().then(setAllLikedPosts)
+        getLikedPostsByUserId(currentUser.id).then(setLikedArr)
+        setAllLikedPosts(allLikedPosts.filter(post => likedArr.some(like => like.postsId === post.id)))
+        setdisplayedPosts(allLikedPosts)
+    }, [])*/
+
+    /*useEffect(() => {
+        getAllPosts().then(posts => {
+            setAllLikedPosts(posts);
+            return getLikedPostsByUserId(currentUser.id);
+        }).then(likedPosts => {
+            setLikedArr(likedPosts);
+            const filteredPosts = allLikedPosts.filter(post => likedArr.some(like => like.postsId === post.id));
+            setdisplayedPosts(filteredPosts);
+        });
+    }, [currentUser]);*/

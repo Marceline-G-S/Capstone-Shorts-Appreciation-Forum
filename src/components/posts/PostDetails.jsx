@@ -18,7 +18,7 @@ export const PostDetails = ({ currentUser }) => {
         //This checks to see if they post was liked by the current user to know which button to display
         getLikes(currentUser.id, postId).then((likes0)=>{setLikes(likes0[0])})
         })
-    }, [postId])
+    }, [postId, currentUser, likes])
 
     //This fetches data for who posted the post.
     useEffect(()=>{
@@ -31,7 +31,7 @@ export const PostDetails = ({ currentUser }) => {
         if ((likes?.userId == currentUser.id)) {
           // Unlike the post
           unlikePost(likes).then(() => {
-            setLikes({userId:0, id:0, postId:0})
+            setLikes({userId:0, id:0})
           });
         } else {
           // Like the post

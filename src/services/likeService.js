@@ -2,7 +2,7 @@ import { getPostByPostId } from "./postService.js"
 
 
 export const getLikes = (userId, postId) => {
-    return fetch(`http://localhost:8088/likes?postId=${postId}&userId=${userId}`).then((res) => res.json())
+    return fetch(`http://localhost:8088/likes?postsId=${postId}&userId=${userId}`).then((res) => res.json())
 }
 
 export const getLikedPostsByUserId = (userId) => {
