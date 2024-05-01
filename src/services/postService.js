@@ -14,17 +14,17 @@ export const getPostByPostId = (postId) => {
     return fetch(`http://localhost:8088/posts?id=${postId}`).then((res) => res.json())
 }
 
-export const NewPost = ({postObjWithTitleBodyUserIdTopic}) => {
+export const NewPost = (userId, title, body, topic) => {
     return fetch('http://localhost:8088/posts', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            userId: postObjWithTitleBodyUserIdTopic.userId,
-            title: postObjWithTitleBodyUserIdTopic.title,
-            body: postObjWithTitleBodyUserIdTopic.body,
-            topic: postObjWithTitleBodyUserIdTopic.topic,
+            userId: userId,
+            title: title,
+            body: body,
+            topic: topic,
             created_at: formatCurrentTime(),
         }),
     }).then((res) => res.json());
