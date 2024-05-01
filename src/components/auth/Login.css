@@ -43,7 +43,7 @@ form {
   border: 1px solid var(--outline);
   border-radius: 10px;
   padding: 1rem 0rem 0rem 1rem;
-  box-shadow: 1px 2px 5px lightgray;
+  box-shadow: 1px 2px 5px rgb(39, 37, 37);
   background-color: var(--offWhite);
 }
 
@@ -76,4 +76,84 @@ fieldset {
   box-shadow: none;
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+
+/** Dark mode **/
+
+/* Login.css */
+.auth-container {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #333; /* Dark background */
+  color: #fff; /* Light text */
+}
+
+.header {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.auth-form {
+  background-color: #444; /* Slightly lighter background for the form */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.auth-form-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem; /* Increased padding */
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #555; /* Darker input field */
+  color: #fff; /* Light text */
+  font-size: 1.25rem; /* Increased font size */
+  outline: none;
+}
+
+.auth-form-input::placeholder {
+  color: #aaa; /* Lighter color for placeholder */
+  opacity: 1; /* Ensure placeholder is fully visible */
+}
+
+
+.auth-form-input:focus {
+  outline: none;
+  background-color: #666; /* Slightly lighter on focus */
+}
+
+.auth-fieldset {
+  margin-bottom: 1rem;
+}
+
+.register-link {
+  margin-top: 1rem; /* Space between the login form and the register link */
+  text-align: center;
+}
+
+.register-link a {
+  color: #fff; /* Light text */
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+button[type="submit"] {
+  background-color: #007bff; /* Blue button */
+  color: #fff; /* Light text */
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }

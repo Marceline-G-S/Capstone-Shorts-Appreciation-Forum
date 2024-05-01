@@ -35,7 +35,7 @@ export const unlikePost = (like) => {
 };
 
 
-const formatCurrentTime = () => {
+export const formatCurrentTime = () => {
     // Create a new Date object for the current date and time
     var now = new Date();
 

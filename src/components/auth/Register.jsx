@@ -2,31 +2,8 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./Login.css"
 import { createUser, getUserByUsername } from "../../services/userService"
-
-const formatCurrentTime = () => {
-  // Create a new Date object for the current date and time
-  var now = new Date();
-
-  // Extract the date and time components
-  var year = now.getFullYear()
-  var month = now.getMonth() + 1; // Months are 0-based, so we add 1
-  var day = now.getDate();
-  var hours = now.getHours();
-  var minutes = now.getMinutes();
-  var seconds = now.getSeconds();
-
-  // Pad single-digit months, days, hours, minutes, and seconds with a leading zero
-  if (month < 10) month = '0' + month;
-  if (day < 10) day = '0' + day;
-  if (hours < 10) hours = '0' + hours;
-  if (minutes < 10) minutes = '0' + minutes;
-  if (seconds < 10) seconds = '0' + seconds;
-
-  // Format the date and time as a string
-  var formattedDateTime = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
-
-  return formattedDateTime;
-}
+import { formatCurrentTime } from "../../services/likeService.js"
+import { TypesDropdown } from "../typeDropdown/typesDropdown.jsx"
 
 export const Register = (props) => {
   const [user, setUser] = useState({
@@ -34,11 +11,13 @@ export const Register = (props) => {
     type: 0,
   })
   let navigate = useNavigate()
+  const [type, setType] = useState(0)
+  
 
   const registerNewUser = () => {
     const newUser = {
       ...user,
-      type: parseInt(user.type),
+      type: parseInt(type),
       role: "user",
       created_at: formatCurrentTime()
     }
@@ -99,14 +78,7 @@ export const Register = (props) => {
         </fieldset>
         <fieldset className="auth-fieldset">
           <div>
-            <input
-              onChange={updateUser}
-              type="number"
-              id="type"
-              className="auth-form-input"
-              placeholder="Type # (enter a number 1-15)"
-              required
-            />
+            <TypesDropdown onTypeChange={(selectedTypeId) => {setType(selectedTypeId)}} />
           </div>
         </fieldset>
         <fieldset className="auth-fieldset">
