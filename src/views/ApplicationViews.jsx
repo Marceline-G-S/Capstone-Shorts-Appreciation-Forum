@@ -9,6 +9,7 @@ import { PostDetails } from "../components/posts/PostDetails.jsx"
 import { MyPosts } from "../components/posts/MyPosts.jsx"
 import { MyLikedPosts } from "../components/posts/Favorites.jsx"
 import { CreatePost } from "../components/posts/NewPosts.jsx"
+import { EditPost } from "../components/posts/EditPost.jsx"
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({id:0})
@@ -30,6 +31,7 @@ export const ApplicationViews = () => {
         <Route path="posts">
           <Route index element={<PostList/>}/>
           <Route path=":postId" element={<PostDetails getAndSetUser={getAndSetUser} currentUser={currentUser}/>}/>
+          <Route path="Edit/:postId" element={<EditPost currentUser={currentUser} />}/>
         </Route>
 
         <Route path="myposts">  
