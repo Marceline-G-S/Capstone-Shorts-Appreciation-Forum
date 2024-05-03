@@ -6,10 +6,11 @@ export const ProfileRender = ({user}) => {
     const [trainerType, setTrainerType] = useState("")
 
     useEffect(()=>{
-        getTypeById(user?.type).then((typeObj)=>{
-            setTrainerType(typeObj)
-        })
-    }, [])
+        if (user?.type){
+            getTypeById(user?.type).then((typeObj)=>{
+                setTrainerType(typeObj) 
+        })}
+    }, [user])
 
     return <div className="user">
                 <div className="user-info">
@@ -18,7 +19,7 @@ export const ProfileRender = ({user}) => {
                 </div>
                 <div className="user-info">
                     <div>Trainer type:</div>
-                    <div>{trainerType.typeName}</div>
+                    <div>{trainerType?.typeName}</div>
                 </div>
             </div>
 }
